@@ -1,0 +1,3 @@
+[submodule "sample-temperature-service-builder"]
+	path = sample-temperature-service-builder
+	url = https://github.com/amusarra/sample-temperature-service-builder.git
