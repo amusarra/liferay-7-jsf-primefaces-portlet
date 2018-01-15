@@ -1,6 +1,7 @@
 apply plugin: 'war'
 
 repositories {
+     mavenLocal()
      mavenCentral()
 }
 
@@ -13,5 +14,6 @@ dependencies {
     providedCompile group: "org.osgi", name:"org.osgi.core", version:"6.0.0"
     providedCompile group: 'javax.faces', name: 'javax.faces-api', version:'2.2'
     runtime group: 'org.glassfish', name: 'javax.faces', version:'2.2.14'
-}
 
+    providedCompile group: 'it.dontesta.labs.services.temperature', name: 'it.dontesta.labs.services.temperature.api', version:'1.0.0'
+}
