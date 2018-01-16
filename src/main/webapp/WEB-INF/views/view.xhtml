@@ -20,6 +20,54 @@
 			<li><em><h:outputText value="#{product.PRIMEFACES}" /></em></li>
 		</ul>		
 		<p><span><strong>Liferay Registered Users</strong>: </span><h:outputText value="#{registeredUser.countRegisteredUser}"/></p>
-		<p><span><strong>Temperature</strong> for DeviceId: <h:outputText value="#{registeredUser.deviceId}"/> is: </span><h:outputText value="#{registeredUser.deviceTemperatureValue}"/>°</p>
+
+		<h:form id="form">
+		    <p:dataGrid var="temperature" value="#{dataGridView.temperatures}" columns="3" layout="grid"
+		        rows="12" paginator="true" id="temperatures"
+		        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		        rowsPerPageTemplate="6,12,16">
+		 
+		        <f:facet name="header">
+		            Temperatues for Device
+		        </f:facet>
+		 
+		        <p:panel header="Temperature Id: #{temperature.temperatureId}" style="text-align:center">
+		            <h:panelGrid columns="1" style="width:100%">
+		                <p:graphicImage name="images/devices/icons8-iot-sensor-#{temperature.status}-50.png"/> 
+		 
+		                <h:outputText value="Device Id: " /><h:outputText value="#{temperature.deviceId}" />
+		 
+		                <p:commandLink update=":form:temperatureDetail" oncomplete="PF('temperatureDialog').show()" title="View Detail">
+		                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+		                    <f:setPropertyActionListener value="#{temperature}" target="#{dataGridView.selectedTemperature}" />
+		                </p:commandLink>
+		            </h:panelGrid>
+		        </p:panel>
+		 
+		    </p:dataGrid>
+		 
+		    <p:dialog header="Temperature Info" widgetVar="temperatureDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="temperatureDetail" style="text-align:center;">
+		            <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedTemperature}" columnClasses="label,value">
+		                <f:facet name="header">
+		                    <p:graphicImage name="images/devices/icons8-iot-sensor-#{dataGridView.selectedTemperature.status}-50.png"/> 
+		                </f:facet>
+		 
+		                <h:outputText value="Temperature Id:" />
+		                <h:outputText value="#{dataGridView.selectedTemperature.temperatureId}" />
+		 
+		                <h:outputText value="Device Id" />
+		                <h:outputText value="#{dataGridView.selectedTemperature.deviceId}" />
+		 
+		                <h:outputText value="Temperature:" />
+		                <h:outputText value="#{dataGridView.selectedTemperature.value} °"/>
+
+		                <h:outputText value="Status" />
+		                <h:outputText value="#{dataGridView.selectedTemperature.status}"/>
+		 
+		            </p:panelGrid>
+		        </p:outputPanel>
+		    </p:dialog>
+		</h:form>
 	</h:body>
 </f:view>
