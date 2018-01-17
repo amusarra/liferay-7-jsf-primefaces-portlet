@@ -3,6 +3,8 @@ This project refers to the article [Liferay 7: How to access OSGi services from 
 
 ## Quickstart
 
+1.Build alla packages
+
 ```
 $ git clone https://github.com/amusarra/liferay-7-jsf-primefaces-portlet.git
 $ cd liferay-7-jsf-primefaces-portlet
@@ -12,5 +14,15 @@ $ cd sample-temperature-service-builder
 $ gradle install
 $ cd ..
 $ gradle build
+```
+2.Deploy on your $LIFERAY_HOME/deploy
+
+```
 $ find . -type f \( -name "it*.jar*" -o -name "*.war" \) -exec cp {} $LIFERAY_HOME/deploy/ \;
 ```
+
+![Liferay 7 JSF Primefaces Portlet](https://www.dontesta.it/wp-content/uploads/2018/01/liferay-7-jsf-primefaces-portlet_1.png "Liferay 7 JSF Primefaces Portlet")
+
+
+![Liferay 7 JSF Primefaces Portlet](https://www.dontesta.it/wp-content/uploads/2018/01/liferay-7-jsf-primefaces-portlet_2.png "Liferay 7 JSF Primefaces Portlet")
+
