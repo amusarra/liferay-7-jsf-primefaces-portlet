@@ -8,12 +8,12 @@ import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.portal.kernel.service.UserLocalService;
 
 /**
@@ -66,5 +66,5 @@ public class ExampleAccessToOSGiService {
 
 	private int countRegisteredUser;
 	private UserLocalServiceTracker userLocalServiceTracker;
-	private static final Logger _log = LoggerFactory.getLogger(ExampleAccessToOSGiService.class);
+	private static final Log _log = LogFactoryUtil.getLog(ExampleAccessToOSGiService.class);
 }

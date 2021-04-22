@@ -10,12 +10,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
 
 import it.dontesta.labs.services.temperature.model.Temperature;
 import it.dontesta.labs.services.temperature.service.TemperatureLocalService;
@@ -70,7 +69,7 @@ public class DataGridView implements Serializable {
 	private Temperature selectedTemperature;
 
 	private TemperatureLocalServiceTracker temperatureLocalServiceTracker;
-	private static final Logger _log = LoggerFactory.getLogger(DataGridView.class);
+	private static final Log _log = LogFactoryUtil.getLog(DataGridView.class);
 	private static final long serialVersionUID = -5212057358494157536L;
 
 }
